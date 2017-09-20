@@ -19,26 +19,82 @@ namespace Задание_6
 
             return Calc(arr, M, i + 1);
         }
-
+        static double InputDouble(int left, int right)
+        {  bool ok = false;
+            double number = -100;
+            do
+            {
+                try
+                {
+                    number = Convert.ToDouble(Console.ReadLine());
+                    if (number >= left && number < right) ok = true;
+                    else
+                    {
+                        Console.WriteLine("Ошибка ввода");
+                        ok = false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка ввода");
+                    ok = false;
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Ошибка ввода");
+                    ok = false;
+                }
+            } while (!ok);
+            return number;
+        }
+        static int InputNat(int left, int right)
+        {
+            bool ok = false;
+            int number = 4;
+            do
+            {
+                try
+                {
+                    number = Convert.ToInt32(Console.ReadLine());
+                    if (number >= left && number < right) ok = true;
+                    else
+                    {
+                        Console.WriteLine("Ошибка ввода");
+                        ok = false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка ввода");
+                    ok = false;
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Ошибка ввода");
+                    ok = false;
+                }
+            } while (!ok);
+            return number;
+        }
         static void Main(string[] args)
         {
             double a1, a2, a3, M;
             int N;
 
             Console.WriteLine("Введите a1");
-            a1 = double.Parse(Console.ReadLine());
+            a1 = InputDouble(-100,100);
 
             Console.WriteLine("Введите a2");
-            a2 = double.Parse(Console.ReadLine());
+            a2 = InputDouble(-100, 100);
 
             Console.WriteLine("Введите a3");
-            a3 = double.Parse(Console.ReadLine());
+            a3 = InputDouble(-100, 100);
 
             Console.WriteLine("Введите M");
-            M = double.Parse(Console.ReadLine());
+            M = InputDouble(-100, 100);
 
             Console.WriteLine("Введите N");
-            N = int.Parse(Console.ReadLine());
+            N = InputNat(4, 100);
 
             double[] arr = new double[N];
             arr[0] = a1;
